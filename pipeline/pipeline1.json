@@ -65,13 +65,18 @@
 							"typeProperties": {
 								"source": {
 									"type": "DelimitedTextSource",
+									"additionalColumns": [
+										{
+											"name": "filename",
+											"value": {
+												"value": "@item().name",
+												"type": "Expression"
+											}
+										}
+									],
 									"storeSettings": {
 										"type": "AzureBlobStorageReadSettings",
 										"recursive": true,
-										"wildcardFileName": {
-											"value": "@item().name",
-											"type": "Expression"
-										},
 										"enablePartitionDiscovery": false
 									},
 									"formatSettings": {
