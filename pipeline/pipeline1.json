@@ -139,6 +139,17 @@
 												"type": "Int32",
 												"physicalType": "int"
 											}
+										},
+										{
+											"source": {
+												"name": "filename",
+												"type": "String"
+											},
+											"sink": {
+												"name": "filname",
+												"type": "String",
+												"physicalType": "varchar"
+											}
 										}
 									],
 									"typeConversion": true,
