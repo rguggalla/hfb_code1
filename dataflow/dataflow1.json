@@ -41,7 +41,7 @@
 			],
 			"scriptLines": [
 				"source(output(",
-				"          emplid as short,",
+				"          emplid as integer,",
 				"          { emplname} as string,",
 				"          { emplsal} as integer",
 				"     ),",
