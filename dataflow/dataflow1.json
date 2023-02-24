@@ -77,7 +77,12 @@
 				"     format: 'table',",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true,",
-				"     errorHandlingOption: 'stopOnFirstError') ~> sink1"
+				"     errorHandlingOption: 'stopOnFirstError',",
+				"     mapColumn(",
+				"          emplid,",
+				"          emplname = { emplname},",
+				"          emplsal = { emplsal}",
+				"     )) ~> sink1"
 			]
 		}
 	}
