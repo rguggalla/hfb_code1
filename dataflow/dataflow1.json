@@ -49,7 +49,7 @@
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false) ~> source1",
 				"source(output(",
-				"          emplid as string,",
+				"          emplid as integer,",
 				"          emplname as string,",
 				"          emplsal as integer",
 				"     ),",
