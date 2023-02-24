@@ -13,7 +13,7 @@
 				},
 				{
 					"dataset": {
-						"referenceName": "AzureSqlTable1",
+						"referenceName": "AzureSqlTable2",
 						"type": "DatasetReference"
 					},
 					"name": "source2"
@@ -49,10 +49,9 @@
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false) ~> source1",
 				"source(output(",
-				"          saledate as date,",
-				"          item as string,",
-				"          country as string,",
-				"          quantity as integer",
+				"          emplid as string,",
+				"          emplname as string,",
+				"          emplsal as integer",
 				"     ),",
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
