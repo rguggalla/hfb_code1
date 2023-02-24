@@ -41,9 +41,9 @@
 			],
 			"scriptLines": [
 				"source(output(",
-				"          Column_1 as string,",
-				"          Column_2 as string,",
-				"          Column_3 as string",
+				"          emplid as short,",
+				"          { emplname} as string,",
+				"          { emplsal} as short",
 				"     ),",
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
@@ -77,12 +77,7 @@
 				"     format: 'table',",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true,",
-				"     errorHandlingOption: 'stopOnFirstError',",
-				"     mapColumn(",
-				"          emplid = Column_1,",
-				"          emplname = Column_2,",
-				"          emplsal = Column_3",
-				"     )) ~> sink1"
+				"     errorHandlingOption: 'stopOnFirstError') ~> sink1"
 			]
 		}
 	}
