@@ -22,11 +22,7 @@
 					"fieldList": [],
 					"storeSettings": {
 						"type": "AzureBlobStorageReadSettings",
-						"modifiedDatetimeStart": {
-							"value": "@adddays(utcnow(),-2)",
-							"type": "Expression"
-						},
-						"modifiedDatetimeEnd": "2023-02-24T00:00:00.000Z",
+						"modifiedDatetimeStart": "2023-02-24T00:00:00.000Z",
 						"enablePartitionDiscovery": false
 					},
 					"formatSettings": {
