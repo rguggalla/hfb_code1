@@ -19,12 +19,15 @@
 		},
 		"schema": [
 			{
+				"name": "emplid",
 				"type": "String"
 			},
 			{
+				"name": " emplname",
 				"type": "String"
 			},
 			{
+				"name": " emplsal",
 				"type": "String"
 			}
 		]
