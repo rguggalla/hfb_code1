@@ -12,7 +12,15 @@
 					"name": "source1"
 				}
 			],
-			"sinks": [],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "DelimitedText5",
+						"type": "DatasetReference"
+					},
+					"name": "sink1"
+				}
+			],
 			"transformations": [
 				{
 					"name": "derivedColumn1"
@@ -28,7 +36,11 @@
 				"source1 derive(Saledate = substring({saledate     item      country   quantity}, 1, 13),",
 				"          Item = substring({saledate     item      country   quantity}, 13, 23),",
 				"          Country = substring({saledate     item      country   quantity}, 23, 33),",
-				"          Quantity = substring({saledate     item      country   quantity}, 33, 41)) ~> derivedColumn1"
+				"          Quantity = substring({saledate     item      country   quantity}, 33, 41)) ~> derivedColumn1",
+				"derivedColumn1 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> sink1"
 			]
 		}
 	}
