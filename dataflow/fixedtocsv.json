@@ -24,6 +24,9 @@
 			"transformations": [
 				{
 					"name": "derivedColumn1"
+				},
+				{
+					"name": "select1"
 				}
 			],
 			"scriptLines": [
@@ -37,7 +40,15 @@
 				"          Item = substring({saledate     item      country   quantity}, 13, 23),",
 				"          Country = substring({saledate     item      country   quantity}, 23, 33),",
 				"          Quantity = substring({saledate     item      country   quantity}, 33, 41)) ~> derivedColumn1",
-				"derivedColumn1 sink(allowSchemaDrift: true,",
+				"derivedColumn1 select(mapColumn(",
+				"          Saledate,",
+				"          Item,",
+				"          Country,",
+				"          Quantity",
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> select1",
+				"select1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true) ~> sink1"
