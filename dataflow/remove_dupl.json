@@ -1,5 +1,5 @@
 {
-	"name": "dataflow2",
+	"name": "remove_dupl",
 	"properties": {
 		"type": "MappingDataFlow",
 		"typeProperties": {
@@ -50,7 +50,7 @@
 				"     ignoreNoFilesFound: false) ~> source2",
 				"source1, source2 union(byName: true)~> union1",
 				"union1 aggregate(groupBy(empl),",
-				"     each(match(name != 'emplid'), $$ = first($$))) ~> aggregate1"
+				"     each(match(name != 'empl'), $$ = first($$))) ~> aggregate1"
 			]
 		}
 	}
