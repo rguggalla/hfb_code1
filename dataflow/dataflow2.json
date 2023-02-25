@@ -23,14 +23,17 @@
 			"transformations": [
 				{
 					"name": "union1"
+				},
+				{
+					"name": "aggregate1"
 				}
 			],
 			"scriptLines": [
 				"source(output(",
-				"          empl as string,",
+				"          empl as short,",
 				"          name as string,",
-				"          sal as string,",
-				"          dept as string",
+				"          sal as short,",
+				"          dept as integer",
 				"     ),",
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
@@ -45,7 +48,9 @@
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false) ~> source2",
-				"source1, source2 union(byName: true)~> union1"
+				"source1, source2 union(byName: true)~> union1",
+				"union1 aggregate(groupBy(empl),",
+				"     each(match(name != 'emplid'), $$ = first($$))) ~> aggregate1"
 			]
 		}
 	}
