@@ -10,6 +10,7 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
+				"folderPath": "output",
 				"container": "test"
 			},
 			"columnDelimiter": ",",
@@ -17,19 +18,6 @@
 			"firstRowAsHeader": true,
 			"quoteChar": "\""
 		},
-		"schema": [
-			{
-				"name": "emplid",
-				"type": "String"
-			},
-			{
-				"name": " emplname",
-				"type": "String"
-			},
-			{
-				"name": " emplsal",
-				"type": "String"
-			}
-		]
+		"schema": []
 	}
 }
