@@ -37,9 +37,10 @@
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false) ~> source1",
 				"source1 derive(Saledate = substring({saledate     item      country   quantity}, 1, 13),",
-				"          Item = substring({saledate     item      country   quantity}, 13, 23),",
-				"          Country = substring({saledate     item      country   quantity}, 23, 33),",
-				"          Quantity = substring({saledate     item      country   quantity}, 33, 41)) ~> derivedColumn1",
+				"          Item = substring({saledate     item      country   quantity}, 13, 10),",
+				"          Country = substring({saledate     item      country   quantity}, 23, 10),",
+				"          Quantity = substring({saledate     item      country   quantity}, 33, 8),",
+				"     partitionBy('hash', 1)) ~> derivedColumn1",
 				"derivedColumn1 select(mapColumn(",
 				"          Saledate,",
 				"          Item,",
@@ -50,8 +51,11 @@
 				"     skipDuplicateMapOutputs: true) ~> select1",
 				"select1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
+				"     partitionFileNames:['Output.csv'],",
+				"     truncate: true,",
 				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> sink1"
+				"     skipDuplicateMapOutputs: true,",
+				"     partitionBy('hash', 1)) ~> sink1"
 			]
 		}
 	}
