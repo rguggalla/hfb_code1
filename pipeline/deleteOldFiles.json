@@ -26,7 +26,10 @@
 						"type": "AzureBlobStorageReadSettings",
 						"recursive": true,
 						"modifiedDatetimeStart": "2023-02-24T00:00:00.000Z",
-						"modifiedDatetimeEnd": "2023-02-24T00:00:00.000Z",
+						"modifiedDatetimeEnd": {
+							"value": "@utcnow()",
+							"type": "Expression"
+						},
 						"enablePartitionDiscovery": false
 					},
 					"formatSettings": {
