@@ -1,0 +1,40 @@
+{
+	"name": "sale1_dtst",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlobStorage2",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "SALE1.CSV",
+				"container": "input"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "saledate",
+				"type": "String"
+			},
+			{
+				"name": " saleitem",
+				"type": "String"
+			},
+			{
+				"name": " country",
+				"type": "String"
+			},
+			{
+				"name": " quantity",
+				"type": "String"
+			}
+		]
+	}
+}
