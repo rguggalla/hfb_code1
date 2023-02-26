@@ -15,7 +15,7 @@
 			"sinks": [
 				{
 					"dataset": {
-						"referenceName": "AzureSqlTable1",
+						"referenceName": "RunningTtlDB",
 						"type": "DatasetReference"
 					},
 					"name": "sink1"
@@ -43,9 +43,10 @@
 				"     validateSchema: false,",
 				"     input(",
 				"          saledate as date,",
-				"          item as string,",
+				"          saleitem as string,",
 				"          country as string,",
-				"          quantity as integer",
+				"          quantity as integer,",
+				"          runningTtl as integer",
 				"     ),",
 				"     deletable:false,",
 				"     insertable:true,",
