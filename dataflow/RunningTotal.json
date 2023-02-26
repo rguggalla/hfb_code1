@@ -12,7 +12,15 @@
 					"name": "source1"
 				}
 			],
-			"sinks": [],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "RunningTtlDB",
+						"type": "DatasetReference"
+					},
+					"name": "sink1"
+				}
+			],
 			"transformations": [
 				{
 					"name": "window1"
@@ -30,7 +38,27 @@
 				"     ignoreNoFilesFound: false,",
 				"     dateFormats: ['dd-MMM-yyyy']) ~> source1",
 				"source1 window(asc(saledate, true),",
-				"     RunningTotal = sum({ quantity})) ~> window1"
+				"     RunningTotal = sum({ quantity})) ~> window1",
+				"window1 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     input(",
+				"          saledate as date,",
+				"          saleitem as string,",
+				"          country as string,",
+				"          quantity as integer",
+				"     ),",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:false,",
+				"     format: 'table',",
+				"     errorHandlingOption: 'stopOnFirstError',",
+				"     mapColumn(",
+				"          saledate,",
+				"          saleitem = { saleitem},",
+				"          country = { country},",
+				"          quantity = { quantity}",
+				"     )) ~> sink1"
 			]
 		}
 	}
