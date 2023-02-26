@@ -58,7 +58,8 @@
 				"          saledate,",
 				"          saleitem = { saleitem},",
 				"          country = { country},",
-				"          quantity = { quantity}",
+				"          quantity = { quantity},",
+				"          runningTtl = RunningTotal",
 				"     )) ~> sink1"
 			]
 		}
