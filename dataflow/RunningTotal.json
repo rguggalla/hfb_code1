@@ -13,17 +13,24 @@
 				}
 			],
 			"sinks": [],
-			"transformations": [],
+			"transformations": [
+				{
+					"name": "window1"
+				}
+			],
 			"scriptLines": [
 				"source(output(",
-				"          saledate as date,",
+				"          saledate as date 'dd-MMM-yyyy',",
 				"          { saleitem} as string,",
 				"          { country} as string,",
-				"          { quantity} as integer",
+				"          { quantity} as short",
 				"     ),",
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
-				"     ignoreNoFilesFound: false) ~> source1"
+				"     ignoreNoFilesFound: false,",
+				"     dateFormats: ['dd-MMM-yyyy']) ~> source1",
+				"source1 window(asc(saledate, true),",
+				"     RunningTotal = sum({ quantity})) ~> window1"
 			]
 		}
 	}
