@@ -10,7 +10,6 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"fileName": "SALE1.CSV",
 				"container": "input"
 			},
 			"columnDelimiter": ",",
@@ -18,23 +17,6 @@
 			"firstRowAsHeader": true,
 			"quoteChar": "\""
 		},
-		"schema": [
-			{
-				"name": "saledate",
-				"type": "String"
-			},
-			{
-				"name": " saleitem",
-				"type": "String"
-			},
-			{
-				"name": " country",
-				"type": "String"
-			},
-			{
-				"name": " quantity",
-				"type": "String"
-			}
-		]
+		"schema": []
 	}
 }

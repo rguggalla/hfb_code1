@@ -10,7 +10,7 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"fileName": "saletxt.txt",
+				"folderPath": "output",
 				"container": "test"
 			},
 			"columnDelimiter": ",",
@@ -20,6 +20,15 @@
 		},
 		"schema": [
 			{
+				"name": "emplid",
+				"type": "String"
+			},
+			{
+				"name": " emplname",
+				"type": "String"
+			},
+			{
+				"name": " emplsal",
 				"type": "String"
 			}
 		]
