@@ -1,0 +1,36 @@
+{
+	"name": "sourcesaledtst",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlDatabase1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "saleid",
+				"type": "varchar"
+			},
+			{
+				"name": "itemname",
+				"type": "varchar"
+			},
+			{
+				"name": "cost",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "saledate",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "saletbl_dt"
+		}
+	}
+}
