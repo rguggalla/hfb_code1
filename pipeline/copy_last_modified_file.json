@@ -17,7 +17,7 @@
 				"typeProperties": {
 					"source": {
 						"type": "AzureSqlSource",
-						"sqlReaderQuery": "select lastdate from watermarktbl",
+						"sqlReaderQuery": "select max(lastdate) from watermarktbl",
 						"queryTimeout": "02:00:00",
 						"partitionOption": "None"
 					},
@@ -82,17 +82,42 @@
 					"source": {
 						"type": "AzureSqlSource",
 						"sqlReaderQuery": {
-							"value": "@concat('select * from saletbl_dt where lastdate >', activity('GetWatermarkDt').output.lastdate)",
+							"value": "@concat('select * from saletbl_dt where lastdate > ', activity('GetWatermarkDt').output,' and lastdate <= ', activity('LatestTimestamp').output)",
 							"type": "Expression"
 						},
 						"queryTimeout": "02:00:00",
 						"partitionOption": "None"
 					},
-					"enableStaging": false
+					"sink": {
+						"type": "DelimitedTextSink",
+						"storeSettings": {
+							"type": "AzureBlobStorageWriteSettings"
+						},
+						"formatSettings": {
+							"type": "DelimitedTextWriteSettings",
+							"quoteAllText": true,
+							"fileExtension": ".txt"
+						}
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
 				},
 				"inputs": [
 					{
 						"referenceName": "sourcesaledtst",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DelimitedText3",
 						"type": "DatasetReference"
 					}
 				]
