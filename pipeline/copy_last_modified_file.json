@@ -17,7 +17,7 @@
 				"typeProperties": {
 					"source": {
 						"type": "AzureSqlSource",
-						"sqlReaderQuery": "select max(lastdate) from watermarktbl",
+						"sqlReaderQuery": "select max(lastdate) as latestdate from watermarktbl",
 						"queryTimeout": "02:00:00",
 						"partitionOption": "None"
 					},
@@ -82,7 +82,7 @@
 					"source": {
 						"type": "AzureSqlSource",
 						"sqlReaderQuery": {
-							"value": "@concat('select * from saletbl_dt where lastdate > ', activity('GetWatermarkDt').output,' and lastdate <= ', activity('LatestTimestamp').output)",
+							"value": "@concat('select * from saletbl_dt where lastdate > ', activity('GetWatermarkDt').output.firstRow,' and lastdate <= ', activity('LatestTimestamp').output.firstRow)",
 							"type": "Expression"
 						},
 						"queryTimeout": "02:00:00",
