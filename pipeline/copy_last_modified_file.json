@@ -82,7 +82,7 @@
 					"source": {
 						"type": "AzureSqlSource",
 						"sqlReaderQuery": {
-							"value": "@concat('select * from saletbl_dt where lastdate > ''', activity('GetWatermarkDt').output.firstRow.latestdate,\n''' and saledate <= ''', activity('LatestTimestamp').output.firstRow.recorddate, '''')",
+							"value": "@concat('select * from saletbl_dt where saledate > ''', activity('GetWatermarkDt').output.firstRow.latestdate,\n''' and saledate <= ''', activity('LatestTimestamp').output.firstRow.recorddate, '''')",
 							"type": "Expression"
 						},
 						"queryTimeout": "02:00:00",
