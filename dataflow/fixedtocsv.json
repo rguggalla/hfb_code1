@@ -5,10 +5,6 @@
 		"typeProperties": {
 			"sources": [
 				{
-					"dataset": {
-						"referenceName": "DelimitedText4",
-						"type": "DatasetReference"
-					},
 					"name": "source1"
 				}
 			],
@@ -34,8 +30,7 @@
 				"          {saledate     item      country   quantity} as string",
 				"     ),",
 				"     allowSchemaDrift: true,",
-				"     validateSchema: false,",
-				"     ignoreNoFilesFound: false) ~> source1",
+				"     validateSchema: false) ~> source1",
 				"source1 derive(Saledate = substring({saledate     item      country   quantity}, 1, 13),",
 				"          Item = substring({saledate     item      country   quantity}, 13, 10),",
 				"          Country = substring({saledate     item      country   quantity}, 23, 10),",
